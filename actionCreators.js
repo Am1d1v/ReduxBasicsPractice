@@ -12,11 +12,7 @@ const todos = (state = [], action) => {
             }]
         }
         case "TOGGLE_TODO":{
-            return state.map(todo => {
-                todo.id === action.todoID
-                ? {...todo, completed: !todo.completed}
-                : todo
-            })
+            return state.map(todo => todo.id === action.todoID ? {...todo, completed: !todo.completed} : todo)
         }
         default: {
             return state;
@@ -47,3 +43,12 @@ const toggleToDo = (todoID) => {
 
 // State of Store
 console.log(store.getState());
+
+store.dispatch(addToDo('New Title1'));
+console.log(store.getState());
+
+store.dispatch(addToDo('New Title2'));
+console.log(store.getState());
+
+store.dispatch(toggleToDo(1));
+console.log(store.getState())
